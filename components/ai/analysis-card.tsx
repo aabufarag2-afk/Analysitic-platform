@@ -1,6 +1,6 @@
 "use client"
 
-import { useObject } from "@ai-sdk/react"
+import { experimental_useObject as useObject } from "@ai-sdk/react"
 import { useState } from "react"
 import { aiAnalysisResponseSchema, type AIAnalysisResponse } from "@/lib/ai/schemas"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
