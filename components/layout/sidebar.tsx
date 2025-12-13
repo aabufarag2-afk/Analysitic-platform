@@ -44,9 +44,9 @@ export function Sidebar() {
         {!collapsed && (
           <Link href="/dashboard" className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">CX</span>
+              <span className="text-primary-foreground font-bold text-sm">IQ</span>
             </div>
-            <span className="font-semibold text-sidebar-foreground">Code Xero</span>
+            <span className="font-semibold text-sidebar-foreground">OnchainIQ</span>
           </Link>
         )}
         <Button

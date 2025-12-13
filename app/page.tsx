@@ -10,9 +10,9 @@ export default function HomePage() {
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">CX</span>
+              <span className="text-primary-foreground font-bold text-sm">IQ</span>
             </div>
-            <span className="font-semibold">Code Xero</span>
+            <span className="font-semibold">OnchainIQ</span>
           </div>
           <div className="flex items-center gap-4">
             <Link href="/auth/login">
@@ -102,7 +102,7 @@ export default function HomePage() {
         <div className="rounded-2xl bg-card border border-border p-12 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to dive in?</h2>
           <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-            Start analyzing tokens and tracking whales with Code Xero today.
+            Start analyzing tokens and tracking whales with OnchainIQ today.
           </p>
           <Link href="/dashboard">
             <Button size="lg" className="h-12 px-8">
@@ -116,7 +116,7 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="border-t border-border py-8">
         <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          <p>Code Xero - AI-Powered Blockchain Analytics</p>
+          <p>OnchainIQ - AI-Powered Blockchain Analytics</p>
           <p className="mt-2">Not financial advice. Always DYOR.</p>
         </div>
       </footer>

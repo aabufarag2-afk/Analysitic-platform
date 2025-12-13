@@ -1,4 +1,4 @@
-// Core type definitions for Code Xero Analytics Platform
+// Core type definitions for OnchainIQ Analytics Platform
 
 export type Chain = "solana" | "bnb"
 

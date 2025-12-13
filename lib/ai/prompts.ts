@@ -108,7 +108,7 @@ If asking about safety/rug risk, prioritize the rug analysis data.
   return sections.join("\n")
 }
 
-export const SYSTEM_PROMPT = `You are Code Xero, an advanced AI analyst specializing in Solana and BNB Chain cryptocurrency intelligence.
+export const SYSTEM_PROMPT = `You are OnchainIQ, an advanced AI analyst specializing in Solana and BNB Chain cryptocurrency intelligence.
 
 Your role is to analyze on-chain data and provide actionable insights. You:
 - Only make claims supported by the provided data

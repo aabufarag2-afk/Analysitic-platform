@@ -47,7 +47,7 @@ export function AIChat() {
             <div className="h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
               <Sparkles className="h-8 w-8 text-primary" />
             </div>
-            <h2 className="text-xl font-semibold mb-2">Code Xero AI</h2>
+            <h2 className="text-xl font-semibold mb-2">OnchainIQ AI</h2>
             <p className="text-muted-foreground max-w-md mb-6">
               Ask me anything about Solana or BNB Chain tokens, wallets, and market activity. I analyze on-chain data to
               give you actionable intelligence.

@@ -1,4 +1,4 @@
--- Code Xero Analytics Platform Database Schema
+-- OnchainIQ Analytics Platform Database Schema
 -- Tables for users, alerts, tokens, wallets, and AI query cache
 
 -- Profiles table for user data
