@@ -1,8 +1,7 @@
 "use client"
 
-import { experimental_useObject as useObject } from "@ai-sdk/react"
 import { useState } from "react"
-import { aiAnalysisResponseSchema, type AIAnalysisResponse } from "@/lib/ai/schemas"
+import type { AIAnalysisResponse } from "@/lib/ai/schemas"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -30,24 +29,41 @@ interface AnalysisCardProps {
 export function AnalysisCard({ defaultToken, chain = "solana" }: AnalysisCardProps) {
   const [tokenAddress, setTokenAddress] = useState(defaultToken || "")
   const [query, setQuery] = useState("")
+  const [analysis, setAnalysis] = useState<AIAnalysisResponse | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  const { object, submit, isLoading, error } = useObject({
-    api: "/api/ai/analyze",
-    schema: aiAnalysisResponseSchema,
-  })
-
-  const handleAnalyze = () => {
+  const handleAnalyze = async () => {
     if (!tokenAddress && !query) return
-    submit({
-      query: query || `Analyze this token for safety and whale activity`,
-      context: {
-        tokenAddress: tokenAddress || undefined,
-        chain,
-      },
-    })
-  }
 
-  const analysis = object as AIAnalysisResponse | undefined
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch("/api/ai/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query: query || `Analyze this token for safety and whale activity`,
+          context: {
+            tokenAddress: tokenAddress || undefined,
+            chain,
+          },
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error("Analysis failed")
+      }
+
+      const data = await response.json()
+      setAnalysis(data)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Analysis failed")
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   return (
     <Card className="h-full">
@@ -87,9 +103,7 @@ export function AnalysisCard({ defaultToken, chain = "solana" }: AnalysisCardPro
           </Button>
         </div>
 
-        {error && (
-          <div className="p-3 rounded-lg bg-destructive/10 text-destructive text-sm">Error: {error.message}</div>
-        )}
+        {error && <div className="p-3 rounded-lg bg-destructive/10 text-destructive text-sm">Error: {error}</div>}
 
         {/* Results Section */}
         {analysis && (

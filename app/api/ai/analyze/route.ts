@@ -1,4 +1,4 @@
-import { streamObject } from "ai"
+import { generateObject } from "ai"
 import { aiAnalysisResponseSchema } from "@/lib/ai/schemas"
 import { buildAnalysisPrompt, SYSTEM_PROMPT } from "@/lib/ai/prompts"
 import { getTokenByAddress, getLiquidityByToken, getRugAnalysis } from "@/lib/mock-data/tokens"
@@ -26,7 +26,7 @@ export async function POST(req: Request) {
     recentTransactions,
   })
 
-  const result = streamObject({
+  const { object } = await generateObject({
     model: "anthropic/claude-sonnet-4-20250514",
     schema: aiAnalysisResponseSchema,
     system: SYSTEM_PROMPT,
@@ -34,5 +34,5 @@ export async function POST(req: Request) {
     maxOutputTokens: 4000,
   })
 
-  return result.toTextStreamResponse()
+  return Response.json(object)
 }
