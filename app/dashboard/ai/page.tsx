@@ -1,6 +1,8 @@
 import { AIChat } from "@/components/ai/ai-chat"
 import { AnalysisCard } from "@/components/ai/analysis-card"
 
+export const dynamic = "force-dynamic"
+
 export default function AIPage() {
   return (
     <div className="flex h-full">
